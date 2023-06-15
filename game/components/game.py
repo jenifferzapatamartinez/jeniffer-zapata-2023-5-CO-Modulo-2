@@ -17,6 +17,8 @@ class Game:
         self.y_pos_bg = 0
         self.player=Spaceship()
         self.enemy_manager=EnemyManager()
+        self.level_game=1
+        self.i=0
 
     def run(self):
         # Game loop: events - update - draw
@@ -34,9 +36,11 @@ class Game:
                 self.playing = False
 
     def update(self):
+        self.i +=1
+        print(f"level_game: {self.level_game}")
         user_input=pygame.key.get_pressed()
         self.player.update(user_input)
-        self.enemy_manager.update()
+        self.level_game=self.enemy_manager.update(self.level_game)
 
     def draw(self):
         self.clock.tick(FPS)
