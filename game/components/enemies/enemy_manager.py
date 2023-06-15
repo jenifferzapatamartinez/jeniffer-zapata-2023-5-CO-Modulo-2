@@ -4,13 +4,14 @@ from game.components.enemies.enemy import Enemy
 class EnemyManager:
     def __init__(self):
         self.enemies = []
-        self.level_game=1
-    def update(self,level):
-        self.add_enemy()
-        for enemy in self.enemies:
-            return enemy.update(self.enemies,level)
-        
 
+
+    def update(self, game):
+        self.add_enemy()
+
+        for enemy in self.enemies:
+           return enemy.update(self.enemies, game)
+        
     def draw(self, screen):
         for enemy in self.enemies: 
             enemy.draw(screen)            
